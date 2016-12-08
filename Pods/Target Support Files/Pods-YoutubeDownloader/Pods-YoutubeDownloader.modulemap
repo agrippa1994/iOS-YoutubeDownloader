@@ -1,0 +1,6 @@
+framework module Pods_YoutubeDownloader {
+  umbrella header "Pods-YoutubeDownloader-umbrella.h"
+
+  export *
+  module * { export * }
+}

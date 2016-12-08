@@ -1,0 +1,15 @@
+PODS:
+  - MMYoutubeMP4Extractor (0.1.1):
+    - RMYouTubeExtractor
+  - RMYouTubeExtractor (0.3)
+
+DEPENDENCIES:
+  - MMYoutubeMP4Extractor
+
+SPEC CHECKSUMS:
+  MMYoutubeMP4Extractor: 7d58a1afd784794f178e0896bc7352fd3724fc72
+  RMYouTubeExtractor: 4de4965347d86549c1f4904113be33b0deee697a
+
+PODFILE CHECKSUM: b78525e49ac4e0eff437a9158768d4f0221c1e12
+
+COCOAPODS: 1.1.1
