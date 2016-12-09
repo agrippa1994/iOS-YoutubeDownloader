@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="o6y-4W-cwe">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="wMW-9z-5EJ">
+            <objects>
+                <navigationController id="o6y-4W-cwe" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSg-Nr-rMf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HPT-Qp-MQF" kind="relationship" relationship="rootViewController" id="5LJ-p8-Xz5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5gO-7R-vh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="-27"/>
+        </scene>
+        <!--jb-->
+        <scene sceneID="W1c-fW-3K9">
+            <objects>
+                <viewController id="HPT-Qp-MQF" customClass="ActionViewController" customModule="YoutubeDownloaderAction" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nqd-UJ-IpX"/>
+                        <viewControllerLayoutGuide type="bottom" id="0qX-UL-hoq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gM0-BP-Pn7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="geV-zl-hSo">
+                                <rect key="frame" x="20" y="94" width="374" height="642"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0qX-UL-hoq" firstAttribute="top" secondItem="geV-zl-hSo" secondAttribute="bottom" id="TiG-za-hQs"/>
+                            <constraint firstItem="geV-zl-hSo" firstAttribute="top" secondItem="Nqd-UJ-IpX" secondAttribute="bottom" id="UiO-2Q-UQ7"/>
+                            <constraint firstItem="geV-zl-hSo" firstAttribute="leading" secondItem="gM0-BP-Pn7" secondAttribute="leadingMargin" id="bwZ-he-o3P"/>
+                            <constraint firstItem="geV-zl-hSo" firstAttribute="trailing" secondItem="gM0-BP-Pn7" secondAttribute="trailingMargin" id="mAn-QN-Vz9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="jb" prompt="kjh" id="gtu-Bc-L8T">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jYq-zS-7U7">
+                            <connections>
+                                <action selector="cancel:" destination="HPT-Qp-MQF" id="BrL-9e-iRb"/>
+                            </connections>
+                        </barButtonItem>
+                        <progressView key="titleView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" id="ep1-MY-sCb">
+                            <rect key="frame" x="79" y="51" width="232" height="2"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </progressView>
+                        <barButtonItem key="rightBarButtonItem" title="Download" id="q01-qC-9of">
+                            <connections>
+                                <action selector="download:" destination="HPT-Qp-MQF" id="KNB-I4-v61"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="downloadButton" destination="q01-qC-9of" id="kAg-Xd-YX3"/>
+                        <outlet property="imageView" destination="geV-zl-hSo" id="ZKN-Yw-frI"/>
+                        <outlet property="progressView" destination="ep1-MY-sCb" id="UFG-iw-BQY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ze-Zz-eH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="292.75362318840581" y="-27.717391304347828"/>
+        </scene>
+    </scenes>
+</document>

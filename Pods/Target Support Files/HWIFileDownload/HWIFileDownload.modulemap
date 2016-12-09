@@ -1,0 +1,6 @@
+framework module HWIFileDownload {
+  umbrella header "HWIFileDownload-umbrella.h"
+
+  export *
+  module * { export * }
+}

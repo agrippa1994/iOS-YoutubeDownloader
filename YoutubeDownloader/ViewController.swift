@@ -11,6 +11,8 @@ import MMYoutubeMP4Extractor
 import Foundation
 import AVFoundation
 import AVKit
+import HCYoutubeParser
+import HWIFileDownload
 
 class ViewController: UIViewController {
     
@@ -30,11 +32,12 @@ class ViewController: UIViewController {
                 self.playerViewController?.player = self.player
             }
         }
-        
+        /*
         MMYoutubeMP4Extractor.sharedInstance()
             .mp4(fromYoutubeURL: "https://www.youtube.com/watch?v=uRlaAlVid7o") { url, error in
                 print("URL: \(url), error: \(error)")
                 
+                HCYoutubeParser.
                 OperationQueue.main.addOperation {
                     self.player = AVPlayer(url: url!)
                     self.playerViewController = AVPlayerViewController()
@@ -42,12 +45,20 @@ class ViewController: UIViewController {
                     self.show(self.playerViewController!, sender: self)
                 }
         }
+         */
+        
+        let url = NSURL(string: "https://www.youtube.com/watch?v=uRlaAlVid7o")
+
+        HCYoutubeParser.h264videos(withYoutubeURL: url! as URL!) {
+            print("Details: \($0), error: \($1)")
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     
 }

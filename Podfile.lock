@@ -1,15 +1,24 @@
 PODS:
+  - HCYoutubeParser (0.0.5)
+  - HWIFileDownload (3.0)
   - MMYoutubeMP4Extractor (0.1.1):
     - RMYouTubeExtractor
   - RMYouTubeExtractor (0.3)
+  - UICircularProgressRing (1.1.4)
 
 DEPENDENCIES:
+  - HCYoutubeParser
+  - HWIFileDownload
   - MMYoutubeMP4Extractor
+  - UICircularProgressRing
 
 SPEC CHECKSUMS:
+  HCYoutubeParser: bc1db8c062e4b835eda381f2be2f9970f6a8d071
+  HWIFileDownload: 34cc2afedaeccfab0a3e837127f9c9fbd04006d6
   MMYoutubeMP4Extractor: 7d58a1afd784794f178e0896bc7352fd3724fc72
   RMYouTubeExtractor: 4de4965347d86549c1f4904113be33b0deee697a
+  UICircularProgressRing: 3e49e99c80c0a5c5164e5ad840b232bfe912f260
 
-PODFILE CHECKSUM: b78525e49ac4e0eff437a9158768d4f0221c1e12
+PODFILE CHECKSUM: b279a1ff49a422840f7e7b81c82e2a860047f5d1
 
 COCOAPODS: 1.1.1
