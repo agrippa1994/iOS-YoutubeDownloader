@@ -20,7 +20,6 @@ struct YoutubeVideoInformation {
 
 enum YoutubeAPIError : Error {
     case VideoInformationFailed
-    case NoLength
     case NoTitle
 }
 

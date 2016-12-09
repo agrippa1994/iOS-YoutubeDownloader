@@ -21,7 +21,7 @@ class Persistence {
         }
         return singleton!
     }
-    
+
     private init() {
         container = NSPersistentContainer(name: "YoutubeDownloader")
         
@@ -39,13 +39,5 @@ class Persistence {
         if self.container.viewContext.hasChanges {
             try self.container.viewContext.save()
         }
-    }
-    
-    public func fetchVideos() -> [Video] {
-        let request: NSFetchRequest<Video> = Video.fetchRequest()
-        if let videos = try? self.container.viewContext.fetch(request) {
-            return videos
-        }
-        return []
     }
 }

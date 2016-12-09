@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		278970E5EA441081AD91298B /* Pods_YoutubeDownloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329831DD768088B027B9A648 /* Pods_YoutubeDownloader.framework */; };
 		3C89CCA51DF9ED67005522B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89CCA41DF9ED67005522B9 /* AppDelegate.swift */; };
-		3C89CCA71DF9ED67005522B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89CCA61DF9ED67005522B9 /* ViewController.swift */; };
 		3C89CCAA1DF9ED67005522B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCA81DF9ED67005522B9 /* Main.storyboard */; };
 		3C89CCAF1DF9ED67005522B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCAE1DF9ED67005522B9 /* Assets.xcassets */; };
 		3C89CCB21DF9ED67005522B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCB01DF9ED67005522B9 /* LaunchScreen.storyboard */; };
@@ -35,7 +34,6 @@
 		3CC7BAB81DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */; };
 		3CC7BAB91DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */; };
 		3CC7BABB1DFB4B4300A914A0 /* VideoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BABA1DFB4B4300A914A0 /* VideoListTableViewController.swift */; };
-		3CDDFF291DFAA7C7004DBD1A /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CDDFF281DFAA7C7004DBD1A /* DownloadViewController.swift */; };
 		90D9BC2CB74301E484805889 /* Pods_YoutubeDownloaderAction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4ABAFD055BFB295FBE49E4F /* Pods_YoutubeDownloaderAction.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,7 +80,6 @@
 		329831DD768088B027B9A648 /* Pods_YoutubeDownloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoutubeDownloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C89CCA11DF9ED67005522B9 /* YoutubeDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C89CCA41DF9ED67005522B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3C89CCA61DF9ED67005522B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3C89CCA91DF9ED67005522B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3C89CCAE1DF9ED67005522B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C89CCB11DF9ED67005522B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -108,7 +105,6 @@
 		3CC7BAB41DFB44F700A914A0 /* Video+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataClass.swift"; path = "Core/Video+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataProperties.swift"; path = "Core/Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3CC7BABA1DFB4B4300A914A0 /* VideoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListTableViewController.swift; sourceTree = "<group>"; };
-		3CDDFF281DFAA7C7004DBD1A /* DownloadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		59D1F676D6AA5FA2C7B2DA43 /* Pods-YoutubeDownloader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeDownloader.release.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeDownloader/Pods-YoutubeDownloader.release.xcconfig"; sourceTree = "<group>"; };
 		A609530D8BC61540E0E27E65 /* Pods-YoutubeDownloaderAction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeDownloaderAction.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeDownloaderAction/Pods-YoutubeDownloaderAction.debug.xcconfig"; sourceTree = "<group>"; };
 		C4ABAFD055BFB295FBE49E4F /* Pods_YoutubeDownloaderAction.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoutubeDownloaderAction.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,12 +175,10 @@
 			children = (
 				3CC7BA8B1DFB019B00A914A0 /* YoutubeDownloader.entitlements */,
 				3C89CCA41DF9ED67005522B9 /* AppDelegate.swift */,
-				3C89CCA61DF9ED67005522B9 /* ViewController.swift */,
 				3C89CCA81DF9ED67005522B9 /* Main.storyboard */,
 				3C89CCAE1DF9ED67005522B9 /* Assets.xcassets */,
 				3C89CCB01DF9ED67005522B9 /* LaunchScreen.storyboard */,
 				3C89CCB31DF9ED67005522B9 /* Info.plist */,
-				3CDDFF281DFAA7C7004DBD1A /* DownloadViewController.swift */,
 				3CC7BABA1DFB4B4300A914A0 /* VideoListTableViewController.swift */,
 			);
 			path = YoutubeDownloader;
@@ -525,14 +519,12 @@
 				3CC7BA8F1DFB3C8A00A914A0 /* YoutubeAPI.swift in Sources */,
 				3CC7BA9E1DFB411100A914A0 /* Definition.swift in Sources */,
 				3CC7BA9B1DFB40ED00A914A0 /* VideoRepository.swift in Sources */,
-				3C89CCA71DF9ED67005522B9 /* ViewController.swift in Sources */,
 				3CC7BAA21DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld in Sources */,
 				3CC7BAB61DFB44F700A914A0 /* Video+CoreDataClass.swift in Sources */,
 				3CC7BAB81DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */,
 				3CC7BABB1DFB4B4300A914A0 /* VideoListTableViewController.swift in Sources */,
 				3CC7BA921DFB3D9100A914A0 /* Persistence.swift in Sources */,
 				3CC7BA981DFB3F7000A914A0 /* FileManager+Group.swift in Sources */,
-				3CDDFF291DFAA7C7004DBD1A /* DownloadViewController.swift in Sources */,
 				3C89CCA51DF9ED67005522B9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
