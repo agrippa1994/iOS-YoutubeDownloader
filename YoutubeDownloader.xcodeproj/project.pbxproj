@@ -11,6 +11,7 @@
 		3C2953DF1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953DE1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift */; };
 		3C2953E11DFD8DDB00FBE9A2 /* TmpCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953E01DFD8DDB00FBE9A2 /* TmpCleaner.swift */; };
 		3C2953E31DFD93F500FBE9A2 /* ExtensionExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953E21DFD93F500FBE9A2 /* ExtensionExtractor.swift */; };
+		3C2953E61DFDD9AE00FBE9A2 /* ExtensionExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953E21DFD93F500FBE9A2 /* ExtensionExtractor.swift */; };
 		3C89CCA51DF9ED67005522B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89CCA41DF9ED67005522B9 /* AppDelegate.swift */; };
 		3C89CCAA1DF9ED67005522B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCA81DF9ED67005522B9 /* Main.storyboard */; };
 		3C89CCAF1DF9ED67005522B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCAE1DF9ED67005522B9 /* Assets.xcassets */; };
@@ -32,10 +33,6 @@
 		3CC7BA9F1DFB411100A914A0 /* Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BA9D1DFB411100A914A0 /* Definition.swift */; };
 		3CC7BAA21DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAA01DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld */; };
 		3CC7BAA31DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAA01DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld */; };
-		3CC7BAB61DFB44F700A914A0 /* Video+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAB41DFB44F700A914A0 /* Video+CoreDataClass.swift */; };
-		3CC7BAB71DFB44F700A914A0 /* Video+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAB41DFB44F700A914A0 /* Video+CoreDataClass.swift */; };
-		3CC7BAB81DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */; };
-		3CC7BAB91DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */; };
 		3CC7BABB1DFB4B4300A914A0 /* VideoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC7BABA1DFB4B4300A914A0 /* VideoListTableViewController.swift */; };
 		90D9BC2CB74301E484805889 /* Pods_YoutubeDownloaderAction.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4ABAFD055BFB295FBE49E4F /* Pods_YoutubeDownloaderAction.framework */; };
 /* End PBXBuildFile section */
@@ -108,8 +105,6 @@
 		3CC7BA9A1DFB40ED00A914A0 /* VideoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoRepository.swift; path = Core/VideoRepository.swift; sourceTree = "<group>"; };
 		3CC7BA9D1DFB411100A914A0 /* Definition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Definition.swift; path = Core/Definition.swift; sourceTree = "<group>"; };
 		3CC7BAA11DFB413600A914A0 /* YoutubeDownloader.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YoutubeDownloader.xcdatamodel; sourceTree = "<group>"; };
-		3CC7BAB41DFB44F700A914A0 /* Video+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataClass.swift"; path = "Core/Video+CoreDataClass.swift"; sourceTree = "<group>"; };
-		3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataProperties.swift"; path = "Core/Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3CC7BABA1DFB4B4300A914A0 /* VideoListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoListTableViewController.swift; sourceTree = "<group>"; };
 		59D1F676D6AA5FA2C7B2DA43 /* Pods-YoutubeDownloader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeDownloader.release.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeDownloader/Pods-YoutubeDownloader.release.xcconfig"; sourceTree = "<group>"; };
 		A609530D8BC61540E0E27E65 /* Pods-YoutubeDownloaderAction.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeDownloaderAction.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeDownloaderAction/Pods-YoutubeDownloaderAction.debug.xcconfig"; sourceTree = "<group>"; };
@@ -225,8 +220,6 @@
 		3CC7BA8D1DFB3C7300A914A0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				3CC7BAB41DFB44F700A914A0 /* Video+CoreDataClass.swift */,
-				3CC7BAB51DFB44F700A914A0 /* Video+CoreDataProperties.swift */,
 				3CC7BAA01DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld */,
 				3CC7BA9D1DFB411100A914A0 /* Definition.swift */,
 				3CC7BA8E1DFB3C8A00A914A0 /* YoutubeAPI.swift */,
@@ -529,8 +522,6 @@
 				3CC7BA9E1DFB411100A914A0 /* Definition.swift in Sources */,
 				3CC7BA9B1DFB40ED00A914A0 /* VideoRepository.swift in Sources */,
 				3CC7BAA21DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld in Sources */,
-				3CC7BAB61DFB44F700A914A0 /* Video+CoreDataClass.swift in Sources */,
-				3CC7BAB81DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */,
 				3CC7BABB1DFB4B4300A914A0 /* VideoListTableViewController.swift in Sources */,
 				3CC7BA921DFB3D9100A914A0 /* Persistence.swift in Sources */,
 				3CC7BA981DFB3F7000A914A0 /* FileManager+Group.swift in Sources */,
@@ -542,6 +533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2953E61DFDD9AE00FBE9A2 /* ExtensionExtractor.swift in Sources */,
 				3C89CCBD1DF9ED67005522B9 /* YoutubeDownloaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,8 +560,6 @@
 				3C2953DF1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift in Sources */,
 				3C2953E31DFD93F500FBE9A2 /* ExtensionExtractor.swift in Sources */,
 				3CC7BA7F1DFAC01800A914A0 /* ActionViewController.swift in Sources */,
-				3CC7BAB71DFB44F700A914A0 /* Video+CoreDataClass.swift in Sources */,
-				3CC7BAB91DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
