@@ -34,18 +34,6 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
                 self.playerViewController?.player = self.player
             }
         }
-        
-        let center = MPRemoteCommandCenter.shared()
-        center.nextTrackCommand.isEnabled = true
-        center.nextTrackCommand.addTarget { _ in
-            self.player?.advanceToNextItem()
-            return MPRemoteCommandHandlerStatus.success
-        }
-        center.previousTrackCommand.isEnabled = true
-        center.previousTrackCommand.addTarget { _ in
-            //self.player?.p
-            return MPRemoteCommandHandlerStatus.success
-        }
     }
 
     // MARK: - Table view data source
@@ -101,35 +89,14 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
             let video = videos[indexPath.row]
             VideoRepository.shared.deleteVideo(video: video)
             loadVideos()
+            do {
+                try Persistence.shared.save()
+            } catch {
+                NSLog("Error while saving persistence file: \(error)")
+            }
         }
     }
 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     private func loadVideos(reloadTable: Bool = true) {
         self.videos = VideoRepository.shared.fetchVideos()
         if reloadTable { tableView.reloadData() }
