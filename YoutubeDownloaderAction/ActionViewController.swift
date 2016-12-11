@@ -64,8 +64,8 @@ class ActionViewController: UIViewController {
         extractor.extract { [weak self] url, error in
             if error != nil {
                 switch error! {
-                case .InvalidArguments: self?.alertAndExit(title: "Error", message: "Too many information")
-                case .InvalidUrl:       self?.alertAndExit(title: "Error", message: "Input is no URL")
+                case .InvalidArguments: self?.alertAndExit(title: "Error", message: "Only one URL is supported")
+                case .InvalidUrl:       self?.alertAndExit(title: "Error", message: "No valid URL")
                 }
             } else {
                 YoutubeAPI.retrieveVideoInformation(url: url!) { [weak self]  info, error in
