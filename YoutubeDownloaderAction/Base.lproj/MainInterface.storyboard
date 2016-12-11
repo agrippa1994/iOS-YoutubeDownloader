@@ -14,9 +14,14 @@
         <scene sceneID="wMW-9z-5EJ">
             <objects>
                 <navigationController id="o6y-4W-cwe" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cSg-Nr-rMf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="cSg-Nr-rMf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.055564177690000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="HPT-Qp-MQF" kind="relationship" relationship="rootViewController" id="5LJ-p8-Xz5"/>
