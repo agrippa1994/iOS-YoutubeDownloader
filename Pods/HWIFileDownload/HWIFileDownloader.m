@@ -173,6 +173,12 @@
     }
 }
 
+#pragma mark - Deinit
+
+- (void)invalidate
+{
+    [self.backgroundSession finishTasksAndInvalidate];
+}
 
 - (void)dealloc
 {

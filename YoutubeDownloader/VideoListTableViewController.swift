@@ -9,27 +9,24 @@
 import UIKit
 import AVFoundation
 import AVKit
+import MediaPlayer
 
 class VideoListTableViewController: UITableViewController, AVPlayerViewControllerDelegate {
 
     var videos: [Video]!
     var playerViewController: AVPlayerViewController?
-    var player: AVPlayer?
+    var player: AVQueuePlayer?
+    var assetVideoMapping = [Video: AVAsset]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         loadVideos(reloadTable: false)
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        for video in videos {
-            print("Video: \(video.path)")
-        }
-        
+
         NotificationCenter.default.addObserver(forName: .UIApplicationDidEnterBackground, object: nil, queue: OperationQueue.main) { _ in
             self.playerViewController?.player = nil
         }
-        
-        
+
         NotificationCenter.default.addObserver(forName: .UIApplicationWillEnterForeground, object: nil, queue: OperationQueue.main) { _ in
             self.loadVideos()
 
@@ -38,6 +35,17 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
             }
         }
         
+        let center = MPRemoteCommandCenter.shared()
+        center.nextTrackCommand.isEnabled = true
+        center.nextTrackCommand.addTarget { _ in
+            self.player?.advanceToNextItem()
+            return MPRemoteCommandHandlerStatus.success
+        }
+        center.previousTrackCommand.isEnabled = true
+        center.previousTrackCommand.addTarget { _ in
+            //self.player?.p
+            return MPRemoteCommandHandlerStatus.success
+        }
     }
 
     // MARK: - Table view data source
@@ -55,23 +63,31 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
         let video = videos[indexPath.row]
         cell.imageView?.image = UIImage(data: video.thumbnail as! Data)!
         cell.textLabel?.text = video.title
+
         return cell
     }
     
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let video = videos[indexPath.row]
+        let videosToPlay = videos[indexPath.row ... (videos.count - 1)]
+        var playerItems = [AVPlayerItem]()
+        assetVideoMapping = [:]
+        for video in videosToPlay {
+            let url = URL(fileURLWithPath: video.path!, isDirectory: false)
+            let asset = AVURLAsset(url: url)
+            playerItems.append(AVPlayerItem(asset: asset))
+            assetVideoMapping[video] = asset
+        }
         
-        let url = URL(fileURLWithPath: video.path!, isDirectory: false)
-        let asset = AVURLAsset(url: url)
-        let playerItem = AVPlayerItem(asset: asset)
-        player = AVPlayer(playerItem: playerItem)
-
+        player = AVQueuePlayer(items: playerItems)
+        player!.actionAtItemEnd = .advance
         playerViewController = AVPlayerViewController()
-        playerViewController?.player = self.player
-        playerViewController?.delegate = self
-
-        present(self.playerViewController!, animated: true, completion: nil)
+        playerViewController!.player = self.player
+        playerViewController!.delegate = self
+        
+        present(self.playerViewController!, animated: true) {
+            self.player?.play()
+        }
     }
     
     // Override to support conditional editing of the table view.
@@ -117,6 +133,12 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
     private func loadVideos(reloadTable: Bool = true) {
         self.videos = VideoRepository.shared.fetchVideos()
         if reloadTable { tableView.reloadData() }
+    }
+    
+    private func syncWithControlCenter(video: Video) {
+        MPNowPlayingInfoCenter.default().nowPlayingInfo = [
+            MPMediaItemPropertyTitle: video.title!
+        ]
     }
 
 }

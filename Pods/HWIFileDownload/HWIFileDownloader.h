@@ -80,6 +80,13 @@ typedef void (^HWIFileDownloaderPauseResumeDataBlock)(NSData * _Nullable aResume
 - (void)setupWithCompletion:(nullable void (^)(void))aSetupCompletionBlock;
 
 
+#pragma mark - Deinit
+
+/**
+ Invalidate internal URL background session
+ */
+- (void)invalidate;
+
 #pragma mark - Download
 
 

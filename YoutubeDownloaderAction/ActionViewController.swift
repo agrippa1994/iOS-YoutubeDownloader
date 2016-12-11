@@ -12,13 +12,13 @@ import HWIFileDownload
 
 let kAppId = "group.software.leitold.YoutubeDownloader"
 
-class ActionViewController: UIViewController, HWIFileDownloadDelegate {
-    
+class ActionViewController: UIViewController {
+
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var downloadButton: UIBarButtonItem!
 
-    private var videoInformation: YoutubeVideoInformation? {
+    var videoInformation: YoutubeVideoInformation? {
         didSet {
             print("New videoInformation: \(videoInformation)")
             if let info = videoInformation {
@@ -33,59 +33,94 @@ class ActionViewController: UIViewController, HWIFileDownloadDelegate {
         }
     }
     
-    private var downloader: HWIFileDownloader!
-    private var downloadIdentifier = ""
+    var downloader: HWIFileDownloader!
+    var downloadIdentifier = ""
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.videoInformation = nil
-        self.downloader = HWIFileDownloader(delegate: self)
+    var isDownloadActive: Bool {
+        return downloader.hasActiveDownloads()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if self.extensionContext!.inputItems.count != 1 {
-            return alertAndExit(title: "Error", message: "Only one URL is supported")
+        // delete any previously downloaded file fragments from the temporary directory
+        do {
+            try TmpCleaner.cleanTemporaryPath()
+            NSLog("Cleared temporary dir")
+        } catch {
+            NSLog("Cleaning temporary dir failed: \(error)")
         }
 
-        for item in self.extensionContext!.inputItems as! [NSExtensionItem] {
-            for provider in item.attachments! as! [NSItemProvider] {
-                if provider.hasItemConformingToTypeIdentifier(kUTTypeText as String) {
-                    provider.loadItem(forTypeIdentifier: kUTTypeText as String, options: nil) { data, error in
-                        guard let url = URL(string: data as! String) else {
-                            return self.alertAndExit(title: "Error", message: "No valid URL")
-                        }
+        // set explicitly the video information to nil
+        // Buttons and other UI elements are greyed out
+        self.videoInformation = nil
+        
+        // Initialize downloader and set its delegate
+        self.downloader = HWIFileDownloader(delegate: self)
+        
 
-                        YoutubeAPI.retrieveVideoInformation(url: url) { info, error in
-                            OperationQueue.main.addOperation {
-                                self.videoInformation = info
-                            }
+        // extract input from the host application and retrieve Youtube video information
+        let extractor = ExtensionExtractor(items: self.extensionContext?.inputItems as! [NSExtensionItem])
+        extractor.extract { [weak self] url, error in
+            if error != nil {
+                switch error! {
+                case .InvalidArguments: self?.alertAndExit(title: "Error", message: "Too many information")
+                case .InvalidUrl:       self?.alertAndExit(title: "Error", message: "Input is no URL")
+                }
+            } else {
+                YoutubeAPI.retrieveVideoInformation(url: url!) { [weak self]  info, error in
+                    OperationQueue.main.addOperation { [weak self] in
+                        if info == nil {
+                            self?.alertAndExit(title: "Error", message: "Couldn't fetch any video information")
+                            return
                         }
+                        self?.videoInformation = info
                     }
                 }
             }
         }
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // invalidate background URL threads
+        self.downloader.invalidate()
+        self.downloader = nil
+    }
 
-    private func close() {
-        if !downloadIdentifier.isEmpty {
+    func close() {
+        // cancel pending download
+        if isDownloadActive {
             self.downloader.cancelDownload(withIdentifier: downloadIdentifier)
             downloadIdentifier = ""
         }
+
+        // delete video information
         videoInformation = nil
+        
+        // return to the host application
         let ctx = self.extensionContext!
         ctx.completeRequest(returningItems: ctx.inputItems, completionHandler: nil)
     }
     
-    private func alertAndExit(title: String, message: String) {
+    
+    // shows an alert window and closes the Action Extension whenever the user clicks "OK"
+    func alertAndExit(title: String, message: String) {
         let sheet = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        sheet.addAction(UIAlertAction(title: "OK", style: .default) { _ in self.close() })
+        sheet.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in self?.close() })
         self.present(sheet, animated: true, completion: nil)
     }
     
     @IBAction func cancel(_ sender: Any) {
-        close()
+        if !downloader.hasActiveDownloads() {
+            return close()
+        }
+        
+        let sheet = UIAlertController(title: "Warning", message: "Download is still active! Do you want to cancel this download?", preferredStyle: .alert)
+        sheet.addAction(UIAlertAction(title: "Yes", style: .destructive) { [weak self] _ in self?.close() })
+        sheet.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        self.present(sheet, animated: true, completion: nil)
     }
     
     @IBAction func download(_ sender: Any) {
@@ -93,55 +128,13 @@ class ActionViewController: UIViewController, HWIFileDownloadDelegate {
             return self.alertAndExit(title: "Error", message: "No video information")
         }
         
-        if !downloadIdentifier.isEmpty {
+        if isDownloadActive {
             return self.alertAndExit(title: "Error", message: "Download is still in progress")
         }
         
         downloadIdentifier = UUID().uuidString + ".mp4"
         self.downloader.startDownload(withIdentifier: downloadIdentifier, fromRemoteURL: info.url)
-    }
-    
-    // mark: Info
-    public func downloadDidComplete(withIdentifier aDownloadIdentifier: String, localFileURL aLocalFileURL: URL) {
-        if self.videoInformation != nil {
-            do {
-                let video = try VideoRepository.shared.addVideo(information: self.videoInformation!, localPath: aLocalFileURL)
-                Persistence.shared.container.viewContext.insert(video)
-                try Persistence.shared.save()
-            } catch {
-                return alertAndExit(title: "Error", message: "Video couldn't be stored, error \(error)")
-            }
-        } else {
-            return alertAndExit(title: "Error", message: "Video information is invalid")
-        }
-        close()
-    }
-    
-    public func downloadFailed(withIdentifier aDownloadIdentifier: String, error anError: Error, httpStatusCode aHttpStatusCode: Int, errorMessagesStack anErrorMessagesStack: [String]?, resumeData aResumeData: Data?) {
-        self.alertAndExit(title: "Error", message: "Error while downloading: \(anErrorMessagesStack)")
-    }
-    
-    public func incrementNetworkActivityIndicatorActivityCount() {}
-    public func decrementNetworkActivityIndicatorActivityCount() {}
-    
-    public func downloadProgressChanged(forIdentifier aDownloadIdentifier: String) {
-        guard let progress = downloader.downloadProgress(forIdentifier: aDownloadIdentifier) else {
-            return
-        }
-        self.progressView.progress = progress.downloadProgress
+        self.downloadButton.isEnabled = false
     }
 
-    public func localFileURL(forIdentifier aDownloadIdentifier: String, remoteURL aRemoteURL: URL) -> URL? {
-        let documentPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: kAppGroupName)
-        return URL(string: aDownloadIdentifier, relativeTo: documentPath)
-    }
-    
-    public func download(atLocalFileURL aLocalFileURL: URL, isValidForDownloadIdentifier aDownloadIdentifier: String) -> Bool {
-        return true
-    }
-    
-    func customizeBackgroundSessionConfiguration(_ aBackgroundSessionConfiguration: URLSessionConfiguration) {
-        aBackgroundSessionConfiguration.sharedContainerIdentifier = kAppGroupName
-    }
-    
 }

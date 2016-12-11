@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		278970E5EA441081AD91298B /* Pods_YoutubeDownloader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329831DD768088B027B9A648 /* Pods_YoutubeDownloader.framework */; };
+		3C2953DF1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953DE1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift */; };
+		3C2953E11DFD8DDB00FBE9A2 /* TmpCleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953E01DFD8DDB00FBE9A2 /* TmpCleaner.swift */; };
+		3C2953E31DFD93F500FBE9A2 /* ExtensionExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C2953E21DFD93F500FBE9A2 /* ExtensionExtractor.swift */; };
 		3C89CCA51DF9ED67005522B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C89CCA41DF9ED67005522B9 /* AppDelegate.swift */; };
 		3C89CCAA1DF9ED67005522B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCA81DF9ED67005522B9 /* Main.storyboard */; };
 		3C89CCAF1DF9ED67005522B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C89CCAE1DF9ED67005522B9 /* Assets.xcassets */; };
@@ -78,6 +81,9 @@
 /* Begin PBXFileReference section */
 		12FB0B1C83B4331AE14F79BF /* Pods-YoutubeDownloaderAction.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YoutubeDownloaderAction.release.xcconfig"; path = "Pods/Target Support Files/Pods-YoutubeDownloaderAction/Pods-YoutubeDownloaderAction.release.xcconfig"; sourceTree = "<group>"; };
 		329831DD768088B027B9A648 /* Pods_YoutubeDownloader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YoutubeDownloader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C2953DE1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ActionViewController+HWIFileDownloadDelegate.swift"; sourceTree = "<group>"; };
+		3C2953E01DFD8DDB00FBE9A2 /* TmpCleaner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TmpCleaner.swift; sourceTree = "<group>"; };
+		3C2953E21DFD93F500FBE9A2 /* ExtensionExtractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionExtractor.swift; sourceTree = "<group>"; };
 		3C89CCA11DF9ED67005522B9 /* YoutubeDownloader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeDownloader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C89CCA41DF9ED67005522B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C89CCA91DF9ED67005522B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,6 +215,9 @@
 				3CC7BA7E1DFAC01800A914A0 /* ActionViewController.swift */,
 				3CC7BA801DFAC01800A914A0 /* MainInterface.storyboard */,
 				3CC7BA831DFAC01800A914A0 /* Info.plist */,
+				3C2953DE1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift */,
+				3C2953E01DFD8DDB00FBE9A2 /* TmpCleaner.swift */,
+				3C2953E21DFD93F500FBE9A2 /* ExtensionExtractor.swift */,
 			);
 			path = YoutubeDownloaderAction;
 			sourceTree = "<group>";
@@ -549,12 +558,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C2953E11DFD8DDB00FBE9A2 /* TmpCleaner.swift in Sources */,
 				3CC7BA991DFB3F7000A914A0 /* FileManager+Group.swift in Sources */,
 				3CC7BAA31DFB413600A914A0 /* YoutubeDownloader.xcdatamodeld in Sources */,
 				3CC7BA931DFB3D9100A914A0 /* Persistence.swift in Sources */,
 				3CC7BA901DFB3CAF00A914A0 /* YoutubeAPI.swift in Sources */,
 				3CC7BA9C1DFB40ED00A914A0 /* VideoRepository.swift in Sources */,
 				3CC7BA9F1DFB411100A914A0 /* Definition.swift in Sources */,
+				3C2953DF1DFD8B3900FBE9A2 /* ActionViewController+HWIFileDownloadDelegate.swift in Sources */,
+				3C2953E31DFD93F500FBE9A2 /* ExtensionExtractor.swift in Sources */,
 				3CC7BA7F1DFAC01800A914A0 /* ActionViewController.swift in Sources */,
 				3CC7BAB71DFB44F700A914A0 /* Video+CoreDataClass.swift in Sources */,
 				3CC7BAB91DFB44F700A914A0 /* Video+CoreDataProperties.swift in Sources */,
