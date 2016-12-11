@@ -19,16 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
         try! AVAudioSession.sharedInstance().setActive(true)
-        
-        /*
-        YoutubeAPI.retrieveVideoInformation(url: URL(string: "https://www.youtube.com/watch?v=XSGCzq0Haw4")!) {
-            print("Info \($0), error: \($1)")
-        }
-        
-        let url2 = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.software.leitold.YoutubeDownloader")!
-        
-        print("FILES: \(try? FileManager.default.contentsOfDirectory(atPath: url2.path))")
-        */
         return true
     }
 
