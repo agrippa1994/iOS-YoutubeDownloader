@@ -43,6 +43,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Videos" id="ged-77-5LT"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="zFD-oU-iOO">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="onRefresh:" destination="eW4-Qs-27p" eventType="valueChanged" id="sS3-hC-NYr"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HP2-70-tnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

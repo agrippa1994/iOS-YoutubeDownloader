@@ -18,15 +18,30 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    var videos: [Video]!
+    var videos: [VideoProtocol]!
     var playerViewController: AVPlayerViewController?
     var player: AVQueuePlayer?
-    var assetVideoMapping = [Video: AVAsset]()
+    var videoRepository: VideoRepositoryProtocol!
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @IBAction func onRefresh(_ sender: Any) {
+        refreshControl?.beginRefreshing()
+        self.loadVideos(reloadTable: true)
+        refreshControl?.endRefreshing()
+    }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if ProcessInfo.processInfo.arguments.contains("--testing") {
+            videoRepository = VideoRepositoryMock()
+        } else {
+            videoRepository = VideoRepository.shared
+        }
+
         loadVideos(reloadTable: false)
         self.navigationItem.rightBarButtonItem = self.editButtonItem
 
@@ -59,7 +74,9 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
         let video = videos[indexPath.row]
-        cell.imageView?.image = UIImage(data: video.thumbnail as! Data)!
+        if video.thumbnail != nil {
+            cell.imageView?.image = UIImage(data: video.thumbnail as! Data)!
+        }
         cell.textLabel?.text = video.title
 
         return cell
@@ -70,12 +87,10 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let videosToPlay = videos[indexPath.row ... (videos.count - 1)]
         var playerItems = [AVPlayerItem]()
-        assetVideoMapping = [:]
         for video in videosToPlay {
             let url = URL(fileURLWithPath: video.path!, isDirectory: false)
             let asset = AVURLAsset(url: url)
             playerItems.append(AVPlayerItem(asset: asset))
-            assetVideoMapping[video] = asset
         }
         
         player = AVQueuePlayer(items: playerItems)
@@ -100,7 +115,7 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let video = videos[indexPath.row]
-            VideoRepository.shared.deleteVideo(video: video)
+            videoRepository.deleteVideo(video: video)
             loadVideos()
             do {
                 try Persistence.shared.save()
@@ -113,7 +128,7 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
     private func loadVideos(reloadTable: Bool = true) {
-        self.videos = VideoRepository.shared.fetchVideos()
+        self.videos = videoRepository.fetchVideos()
         if reloadTable { tableView.reloadData() }
     }
 

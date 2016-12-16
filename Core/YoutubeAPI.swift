@@ -15,7 +15,7 @@ import HCYoutubeParser
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-struct YoutubeVideoInformation {
+struct YoutubeVideoInformation : YoutubeVideoInformationProtocol {
     var url         : URL
     var thumbnail   : UIImage?
     var title       : String
@@ -30,11 +30,11 @@ enum YoutubeAPIError : Error {
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-class YoutubeAPI {
+class YoutubeAPI : YoutubeAPIProtocol {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    class func retrieveVideoInformation(url: URL, completion: @escaping (YoutubeVideoInformation?, Error?) -> Void) {
+    static func retrieveVideoInformation(url: URL, completion: @escaping (YoutubeVideoInformationProtocol?, Error?) -> Void) {
         HCYoutubeParser.h264videos(withYoutubeURL: url) { details, error in
             if error != nil {
                 return completion(nil, error!)

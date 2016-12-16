@@ -1,0 +1,53 @@
+//
+//  VideoRepositoryMock.swift
+//  YoutubeDownloader
+//
+//  Created by Manuel Leitold on 16.12.16.
+//  Copyright © 2016 leitold. All rights reserved.
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+import Foundation
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+class VideoRepositoryMock : VideoRepositoryProtocol {
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var videos = Set<VideoMock>()
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    init() {
+        let vid = VideoMock(date: NSDate(), path: "/", thumbnail: nil, title: "Test Video")
+        videos.insert(vid)
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    func addVideo(information: YoutubeVideoInformationProtocol, localPath: URL) throws -> VideoProtocol {
+        let video = VideoMock()
+        video.date = NSDate()
+        video.title = information.title
+        video.thumbnail = nil
+        video.path = localPath.path
+        videos.insert(video)
+        return video
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    func fetchVideos() -> [VideoProtocol] {
+        return [VideoMock](videos)
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
+    func deleteVideo(video: VideoProtocol){
+        guard let vid = video as? VideoMock else {
+            return
+        }
+        videos.remove(vid)
+    }
+}

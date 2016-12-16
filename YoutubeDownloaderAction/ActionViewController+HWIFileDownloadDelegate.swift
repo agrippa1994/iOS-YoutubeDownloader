@@ -9,6 +9,7 @@
 
 import Foundation
 import HWIFileDownload
+import CoreData
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -20,7 +21,7 @@ extension ActionViewController : HWIFileDownloadDelegate {
         if self.videoInformation != nil {
             do {
                 let video = try VideoRepository.shared.addVideo(information: self.videoInformation!, localPath: aLocalFileURL)
-                Persistence.shared.container.viewContext.insert(video)
+                Persistence.shared.container.viewContext.insert(video as! NSManagedObject)
                 try Persistence.shared.save()
             } catch {
                 return alertAndExit(title: "Error", message: "Video couldn't be stored, error \(error)")

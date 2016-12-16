@@ -23,7 +23,7 @@ private var singleton: VideoRepository?
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-class VideoRepository {
+class VideoRepository : VideoRepositoryProtocol {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,7 +40,7 @@ class VideoRepository {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    func addVideo(information: YoutubeVideoInformation, localPath: URL) throws -> Video {
+    func addVideo(information: YoutubeVideoInformationProtocol, localPath: URL) throws -> VideoProtocol {
         if !FileManager.default.fileExists(atPath: localPath.path) {
             throw VideoValidationError.InvalidFilePath
         }
@@ -61,7 +61,7 @@ class VideoRepository {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
 
-    func fetchVideos() -> [Video] {
+    func fetchVideos() -> [VideoProtocol] {
         let request: NSFetchRequest<Video> = Video.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         if let videos = try? Persistence.shared.container.viewContext.fetch(request) {
@@ -72,11 +72,11 @@ class VideoRepository {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
     
-    func deleteVideo(video: Video) {
+    func deleteVideo(video: VideoProtocol) {
         if video.path != nil {
             try? FileManager.default.removeItem(atPath: video.path!)
         }
         
-        Persistence.shared.container.viewContext.delete(video)
+        Persistence.shared.container.viewContext.delete(video as! Video)
     }
 }

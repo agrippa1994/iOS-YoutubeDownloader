@@ -33,7 +33,7 @@ class ExtensionExtractor {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     func extract(completion: @escaping (URL?, ExtensionExtractorError?) -> Void) {
         if items.count != 1 {
             return completion(nil, .InvalidArguments)

@@ -25,7 +25,7 @@ class ActionViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var downloadButton: UIBarButtonItem!
 
-    var videoInformation: YoutubeVideoInformation? {
+    var videoInformation: YoutubeVideoInformationProtocol? {
         didSet {
             print("New videoInformation: \(videoInformation)")
             if let info = videoInformation {
