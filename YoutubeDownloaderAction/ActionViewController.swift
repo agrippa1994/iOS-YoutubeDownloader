@@ -5,14 +5,21 @@
 //  Created by Manuel Leitold on 09.12.16.
 //  Copyright © 2016 leitold. All rights reserved.
 //
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 import UIKit
 import MobileCoreServices
 import HWIFileDownload
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 let kAppId = "group.software.leitold.YoutubeDownloader"
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 class ActionViewController: UIViewController {
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var progressView: UIProgressView!
@@ -39,6 +46,8 @@ class ActionViewController: UIViewController {
     var isDownloadActive: Bool {
         return downloader.hasActiveDownloads()
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,7 +89,9 @@ class ActionViewController: UIViewController {
             }
         }
     }
-    
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -88,6 +99,8 @@ class ActionViewController: UIViewController {
         self.downloader.invalidate()
         self.downloader = nil
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     func close() {
         // cancel pending download
@@ -104,14 +117,16 @@ class ActionViewController: UIViewController {
         ctx.completeRequest(returningItems: ctx.inputItems, completionHandler: nil)
     }
     
-    
+    /////////////////////////////////////////////////////////////////////////////////////////////////
     // shows an alert window and closes the Action Extension whenever the user clicks "OK"
     func alertAndExit(title: String, message: String) {
         let sheet = UIAlertController(title: title, message: message, preferredStyle: .alert)
         sheet.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in self?.close() })
         self.present(sheet, animated: true, completion: nil)
     }
-    
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     @IBAction func cancel(_ sender: Any) {
         if !downloader.hasActiveDownloads() {
             return close()
@@ -122,7 +137,9 @@ class ActionViewController: UIViewController {
         sheet.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
         self.present(sheet, animated: true, completion: nil)
     }
-    
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     @IBAction func download(_ sender: Any) {
         guard let info = self.videoInformation else {
             return self.alertAndExit(title: "Error", message: "No video information")
@@ -136,5 +153,4 @@ class ActionViewController: UIViewController {
         self.downloader.startDownload(withIdentifier: downloadIdentifier, fromRemoteURL: info.url)
         self.downloadButton.isEnabled = false
     }
-
 }

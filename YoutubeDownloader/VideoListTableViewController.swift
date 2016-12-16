@@ -5,18 +5,25 @@
 //  Created by Manuel Leitold on 09.12.16.
 //  Copyright © 2016 leitold. All rights reserved.
 //
+/////////////////////////////////////////////////////////////////////////////////////////////////
 
 import UIKit
 import AVFoundation
 import AVKit
 import MediaPlayer
 
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
 class VideoListTableViewController: UITableViewController, AVPlayerViewControllerDelegate {
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     var videos: [Video]!
     var playerViewController: AVPlayerViewController?
     var player: AVQueuePlayer?
     var assetVideoMapping = [Video: AVAsset]()
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +43,7 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -44,6 +52,8 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -55,6 +65,7 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
         return cell
     }
     
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let videosToPlay = videos[indexPath.row ... (videos.count - 1)]
@@ -77,12 +88,14 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
             self.player?.play()
         }
     }
-    
-    // Override to support conditional editing of the table view.
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
         return true
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -97,15 +110,18 @@ class VideoListTableViewController: UITableViewController, AVPlayerViewControlle
         }
     }
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     private func loadVideos(reloadTable: Bool = true) {
         self.videos = VideoRepository.shared.fetchVideos()
         if reloadTable { tableView.reloadData() }
     }
-    
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////
+
     private func syncWithControlCenter(video: Video) {
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
             MPMediaItemPropertyTitle: video.title!
         ]
     }
-
 }
