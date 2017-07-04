@@ -795,7 +795,7 @@
 				DEVELOPMENT_TEAM = S96554Z38L;
 				INFOPLIST_FILE = YoutubeDownloader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader;
+				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -815,7 +815,7 @@
 				DEVELOPMENT_TEAM = S96554Z38L;
 				INFOPLIST_FILE = YoutubeDownloader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader;
+				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -864,7 +864,7 @@
 				DEVELOPMENT_TEAM = S96554Z38L;
 				INFOPLIST_FILE = YoutubeDownloaderAction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader.YoutubeDownloaderAction;
+				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader2.YoutubeDownloaderAction2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
@@ -883,7 +883,7 @@
 				DEVELOPMENT_TEAM = S96554Z38L;
 				INFOPLIST_FILE = YoutubeDownloaderAction/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader.YoutubeDownloaderAction;
+				PRODUCT_BUNDLE_IDENTIFIER = software.leitold.YoutubeDownloader2.YoutubeDownloaderAction2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
