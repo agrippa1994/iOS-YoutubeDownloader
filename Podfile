@@ -1,9 +1,9 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 def all_pods
     pod 'MMYoutubeMP4Extractor'
-    pod 'HCYoutubeParser'
+    pod 'HCYoutubeParser', :git => 'https://github.com/smudgeio/HCYoutubeParser.git', :branch => 'master'
     pod 'HWIFileDownload', :git => 'https://github.com/agrippa1994/HWIFileDownload.git', :branch => 'delete'
 end
 

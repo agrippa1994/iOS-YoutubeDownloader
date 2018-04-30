@@ -7,5 +7,5 @@
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-public let kAppGroupName = "group.software.leitold.YoutubeDownloader"
+public let kAppGroupName = "group.at.leitold.YoutubeDownloader"
 

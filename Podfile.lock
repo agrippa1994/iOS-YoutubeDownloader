@@ -4,20 +4,24 @@ PODS:
   - MMYoutubeMP4Extractor (0.1.1):
     - RMYouTubeExtractor
   - RMYouTubeExtractor (0.3)
-  - UICircularProgressRing (1.1.4)
 
 DEPENDENCIES:
-  - HCYoutubeParser
+  - HCYoutubeParser (from `https://github.com/smudgeio/HCYoutubeParser.git`, branch `master`)
   - HWIFileDownload (from `https://github.com/agrippa1994/HWIFileDownload.git`, branch `delete`)
   - MMYoutubeMP4Extractor
-  - UICircularProgressRing
 
 EXTERNAL SOURCES:
+  HCYoutubeParser:
+    :branch: master
+    :git: https://github.com/smudgeio/HCYoutubeParser.git
   HWIFileDownload:
     :branch: delete
     :git: https://github.com/agrippa1994/HWIFileDownload.git
 
 CHECKOUT OPTIONS:
+  HCYoutubeParser:
+    :commit: b0cfb62d339d776d5a3883e1c401ac21d7d54102
+    :git: https://github.com/smudgeio/HCYoutubeParser.git
   HWIFileDownload:
     :commit: e5fd778351e4c509c7601709ad26ecf14f98e822
     :git: https://github.com/agrippa1994/HWIFileDownload.git
@@ -27,8 +31,7 @@ SPEC CHECKSUMS:
   HWIFileDownload: 34cc2afedaeccfab0a3e837127f9c9fbd04006d6
   MMYoutubeMP4Extractor: 7d58a1afd784794f178e0896bc7352fd3724fc72
   RMYouTubeExtractor: 4de4965347d86549c1f4904113be33b0deee697a
-  UICircularProgressRing: 3e49e99c80c0a5c5164e5ad840b232bfe912f260
 
-PODFILE CHECKSUM: d056403a19c7263fbf49e588ce9fd89cd9f53d93
+PODFILE CHECKSUM: a7f26e34d54983b7566cc0a773591d0fe867d03e
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.4.0

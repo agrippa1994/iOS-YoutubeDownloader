@@ -1,4 +1,6 @@
-##HCYoutubeParser
+> This project is not being maintained. 
+
+## HCYoutubeParser
 
 HCYoutubeParser is a class which lets you get the iOS compatible video url from YouTube so you don't need to use a `UIWebView` or open the YouTube Application.
 

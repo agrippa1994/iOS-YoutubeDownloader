@@ -13,7 +13,7 @@ import HWIFileDownload
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
-let kAppId = "group.software.leitold.YoutubeDownloader"
+let kAppId = "group.at.leitold.YoutubeDownloader"
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ class ActionViewController: UIViewController {
 
     var videoInformation: YoutubeVideoInformationProtocol? {
         didSet {
-            print("New videoInformation: \(videoInformation)")
+            print("New videoInformation: \(String(describing: videoInformation))")
             if let info = videoInformation {
                 self.imageView.image = info.thumbnail
                 self.navigationItem.prompt = info.title
